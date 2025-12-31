@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "askdocs"
+version = "0.1.0"
+description = "RAG Knowledge Base API"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "sqlalchemy>=2.0.25",
+    "alembic>=1.13.1",
+    "asyncpg>=0.29.0",
+    "pgvector>=0.2.4",
+    "pydantic-settings>=2.1.0",
+    "python-multipart>=0.0.9",
+    "python-jose[cryptography]>=3.3.0",
+    "passlib[bcrypt]>=1.7.4",
+    "bcrypt==4.0.1",
+    "celery[redis]>=5.3.6",
+    "redis>=5.0.1",
+    "openai>=1.12.0",
+    "langchain-text-splitters>=0.0.1",
+    "pypdf>=4.0.1",
+    "tenacity>=8.2.3",
+    "python-dotenv>=1.0.1",
+    "email-validator>=2.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.5",
+    "httpx>=0.26.0",
+    "ruff>=0.2.1",
+    "black>=24.1.1",
+    "mypy>=1.8.0",
+    "types-python-jose>=3.3.4",
+    "types-passlib>=1.7.7",
+    "types-redis>=4.6.0",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]
+ignore = ["E501"]
